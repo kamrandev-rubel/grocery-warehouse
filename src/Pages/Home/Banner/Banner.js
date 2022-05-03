@@ -12,7 +12,7 @@ import carouselImg3 from '../../../images/carousel3.png'
 
 const Banner = () => {
     return (
-        <>
+        <d>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -28,11 +28,11 @@ const Banner = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide><img className='brightness-50' src={carouselImg1} alt="" /></SwiperSlide>
-                <SwiperSlide><img className='brightness-50' src={carouselImg2} alt="" /></SwiperSlide>
-                <SwiperSlide><img className='brightness-50' src={carouselImg3} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='brightness-[0.4]' src={carouselImg1} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='brightness-[0.4]' src={carouselImg2} alt="" /></SwiperSlide>
+                <SwiperSlide><img className='brightness-[0.4]' src={carouselImg3} alt="" /></SwiperSlide>
             </Swiper>
-        </>
+        </d>
     );
 };
 
