@@ -1,4 +1,8 @@
 import React from 'react';
+import { FaFacebookF } from 'react-icons/fa';
+import { RiInstagramFill } from 'react-icons/ri';
+import { AiFillYoutube } from 'react-icons/ai';
+import { IoLogoWhatsapp, IoLogoLinkedin } from 'react-icons/io';
 
 const Footer = () => {
     return (
@@ -11,8 +15,12 @@ const Footer = () => {
                 <div className='text-white'>
                     <p className='text-4xl'>880-556-0777</p>
                     <p className='text-4xl'>Support@grocerystore.com</p>
-                    <div>
-
+                    <div className='flex mt-9'>
+                        <FaFacebookF className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
+                        <RiInstagramFill className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
+                        <AiFillYoutube className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
+                        <IoLogoWhatsapp className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
+                        <IoLogoLinkedin className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
                     </div>
                 </div>
             </div>
