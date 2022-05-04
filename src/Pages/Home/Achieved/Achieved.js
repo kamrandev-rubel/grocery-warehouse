@@ -16,11 +16,11 @@ const Achieved = () => {
                     <div>
                         <div className='flex items-center my-16'>
                             <img className='w-[154px] h-[154px]' src={ratedImg} alt="" />
-                            <p className='ml-10 flex items-center'><span className='font-[700] text-4xl'>4.9</span> Rated</p>
+                            <p className='ml-10 flex items-center'><span className='font-[700] text-4xl'>4.9 </span> Rated</p>
                         </div>
                         <div className='flex items-center'>
                             <img className='w-40 h-40' src={customerImg} alt="" />
-                            <p className='ml-10 flex items-center'><span className='font-[700] text-4xl'>100K+</span> Happy Customers</p>
+                            <p className='ml-10 flex items-center'><span className='font-[700] text-4xl'>100K+ </span> Happy Customers</p>
                         </div>
                     </div>
                 </div>
