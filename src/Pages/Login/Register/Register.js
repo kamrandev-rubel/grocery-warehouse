@@ -39,7 +39,7 @@ const Register = () => {
 
         setPasswordError('')
         setError(false)
-        // createUserWithEmailAndPassword(email, password)
+        createUserWithEmailAndPassword(email, password)
     }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 '>

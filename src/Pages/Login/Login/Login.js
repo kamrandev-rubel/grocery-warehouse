@@ -5,9 +5,35 @@ import { BsEyeFill } from 'react-icons/bs'
 import { FiKey, FiEye } from 'react-icons/fi'
 import loginImg from '../../../images/login.png'
 import { Link } from 'react-router-dom';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const Login = () => {
     const [isShow, setIsShow] = useState(false)
+    const [error, setError] = useState(false)
+    const [passwordError, setPasswordError] = useState('')
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        loginError,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    const handleLoginUser = (event) => {
+        event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        console.log(user)
+        console.log(loginError)
+        if (password.length < 6) {
+            setError(true)
+            setPasswordError('Wrong Password')
+            return;
+        }
+        setError(false)
+        setPasswordError('')
+        signInWithEmailAndPassword(email, password)
+    }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
             <div className='bg-[#E0DCDC] flex items-center w-full6'>
@@ -27,7 +53,7 @@ const Login = () => {
                     </div>
                 </div>
                 <div>
-                    <form>
+                    <form onSubmit={handleLoginUser}>
                         <div className='relative h-20 w-full mb-8'>
                             <HiOutlineMail className='absolute w-5 h-5 md:w-9 md:h-9 top-[30px] left-[11px] md:top-[26px] md:left-[29px]' />
                             <label className='absolute md:left-24 left-10 top-6 text-[12px] font-bold' htmlFor="email">Email</label>
@@ -42,10 +68,11 @@ const Login = () => {
                                     <FiEye onClick={() => setIsShow(!isShow)} className='absolute cursor-pointer w-5 h-5 md:w-9 md:h-9 right-5 top-[30px] md:right-5 md:top-[22px]' />
                             }
                             <label className='absolute md:left-24 left-10 top-6 text-[12px] font-bold' htmlFor="password">Password</label>
-                            <input type={isShow ? 'text' : 'password'} name="password" className='w-full h-full bg-[#F2F2F2] outline-none rounded-2xl pl-10 md:pl-24 pt-8' id="password" placeholder='Enter Password' required />
+                            <input type={isShow ? 'text' : 'password'} name="password" className={`${error ? 'border-2 border-red-500' : ''} w-full h-full bg-[#F2F2F2] outline-none rounded-2xl pl-10 md:pl-24 pt-8`} id="password" placeholder='Enter Password' required />
+                            <p className='text-red-500 font-[roboto] mt-1 text-[12px] ml-4'>{passwordError} </p>
                         </div>
                         <p className='text-right text-lg text-gray-600 cursor-pointer mt-5'>Forget Password?</p>
-                        <input type="submit" value="Login" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-[#6C63FF] text-white w-full mb-6 rounded-3xl h-20 mt-16' />
+                        <input type="submit" value="Login" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-[#6C63FF] text-white w-full mb-6 rounded-3xl h-20 mt-16 cursor-pointer' />
                         <p className='text-center mt-7'>Don’t have an account? <Link className='text-[#6C63FF]' to='/register'>Register</Link></p>
                     </form>
                 </div>
