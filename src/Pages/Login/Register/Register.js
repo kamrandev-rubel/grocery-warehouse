@@ -48,7 +48,7 @@ const Register = () => {
             <div className='bg-white p-11'>
                 <div>
                     <h2 className='text-5xl font-bold mb-11 leading-[56px] text-center'>Welcome to <br /> <span className='text-[#6C63FF]'>Grocery Store</span></h2>
-                    <button className='flex items-center justify-center font-[roboto] font-bold text-lg text-gray-700 w-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] mb-6 rounded-3xl h-20 cursor-pointer'>
+                    <button onClick={() => signInWithGoogle()} className='flex items-center justify-center font-[roboto] font-bold text-lg text-gray-700 w-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] mb-6 rounded-3xl h-20 cursor-pointer'>
                         <FcGoogle className='w-9 h-9 mr-6' />
                         Login With Google
                     </button>
