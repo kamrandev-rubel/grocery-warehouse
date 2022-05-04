@@ -5,10 +5,13 @@ import auth from '../../../firebase.init';
 import logo from '../../../images/logo.png'
 import { FaUserCircle } from 'react-icons/fa'
 import { RiArrowDownSFill } from 'react-icons/ri'
+import { HiMenuAlt1 } from 'react-icons/hi'
+import { IoClose } from 'react-icons/io5'
 import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
     const [isActive, setIsActive] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     const [user] = useAuthState(auth);
 
     const handleUserProfile = () => {
@@ -28,12 +31,13 @@ const Navbar = () => {
 
                     <span className="self-center text-xl font-semibold whitespace-nowrap  ">GROCERY STORE</span>
                 </Link>
-                <button data-collapse-toggle="mobile-menu" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  " aria-controls="mobile-menu" aria-expanded="false">
-                    <span className="sr-only">Open main menu</span>
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                    <svg className="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <button onClick={() => setIsOpen(!isOpen)} type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-expanded="false">
+                    {
+                        isOpen ? <IoClose className='text-2xl' /> : <HiMenuAlt1 className='text-2xl' />
+
+                    }
                 </button>
-                <div className="hidden w-full md:block md:w-auto" id="mobile-menu">
+                <div className={`${isOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`}>
                     <ul className="flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                         <li>
                             <Link to="/home" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">Home</Link>
@@ -50,11 +54,15 @@ const Navbar = () => {
                                     <div className='relative'>
                                         {
                                             user?.photoURL ?
-                                                <div className=''>
-                                                    <img src={user?.photoURL} className='w-[48px] h-[48px] rounded-full cursor-pointer inline-block' alt="" /> <RiArrowDownSFill className='inline-block text-4xl cursor-pointer' />
-                                                </div>
+                                                <>
+                                                    <img src={user?.photoURL} className='w-[48px] h-[48px] rounded-full cursor-pointer inline-block' alt="" />
+                                                    <RiArrowDownSFill className='inline-block text-4xl cursor-pointer' />
+                                                </>
                                                 :
-                                                <FaUserCircle className='text-5xl text-gray-500 cursor-pointer' />
+                                                <>
+                                                    <FaUserCircle className='text-5xl text-gray-500 cursor-pointer inline-block' />
+                                                    <RiArrowDownSFill className='inline-block text-4xl cursor-pointer' />
+                                                </>
                                         }
                                         <div className={`${isActive ? 'block' : 'hidden'} absolute md:text-right lg:text-left md:left-[-60px] lg:left-[-37px] z-50 shadow-lg`}>
                                             <ul className='bg-gray-500 font-[roboto] font-[500] text-lg p-2 px-4 text-white rounded-t-2xl'>
