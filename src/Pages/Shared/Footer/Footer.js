@@ -16,11 +16,11 @@ const Footer = () => {
                     <p className='text-4xl'>880-556-0777</p>
                     <p className='text-4xl'>Support@grocerystore.com</p>
                     <div className='flex mt-9'>
-                        <FaFacebookF className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
-                        <RiInstagramFill className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
-                        <AiFillYoutube className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
-                        <IoLogoWhatsapp className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
-                        <IoLogoLinkedin className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full' />
+                        <FaFacebookF className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full cursor-pointer' />
+                        <RiInstagramFill className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full cursor-pointer' />
+                        <AiFillYoutube className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full cursor-pointer' />
+                        <IoLogoWhatsapp className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full cursor-pointer' />
+                        <IoLogoLinkedin className='w-16 h-16 bg-slate-300 p-4 text-black ml-4 rounded-full cursor-pointer' />
                     </div>
                 </div>
             </div>
