@@ -7,6 +7,7 @@ import { BsEyeFill } from 'react-icons/bs'
 import loginImg from '../../../images/login.png'
 import { Link } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 
 
@@ -19,6 +20,7 @@ const Register = () => {
         user,
         loading
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle, GooglrUser, GoogleLoading, GooleError] = useSignInWithGoogle(auth);
     const handleCreateUser = (event) => {
         event.preventDefault()
         const name = event.target.name.value;

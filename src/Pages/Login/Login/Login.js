@@ -6,6 +6,7 @@ import { FiKey, FiEye } from 'react-icons/fi'
 import loginImg from '../../../images/login.png'
 import { Link } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 
 const Login = () => {
@@ -18,6 +19,7 @@ const Login = () => {
         loading,
         loginError,
     ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, GooglrUser, GoogleLoading, GooleError] = useSignInWithGoogle(auth);
 
     const handleLoginUser = (event) => {
         event.preventDefault();
@@ -42,7 +44,7 @@ const Login = () => {
             <div className='bg-white p-11 w-full'>
                 <div>
                     <h2 className='text-5xl font-bold mb-11 leading-[56px] text-center'>Welcome to <br /> <span className='text-[#6C63FF]'>Grocery Store</span></h2>
-                    <button className='flex items-center justify-center font-[roboto] font-bold text-lg text-gray-700 w-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] mb-6 rounded-3xl h-20'>
+                    <button onClick={() => signInWithGoogle()} className='flex items-center justify-center font-[roboto] font-bold text-lg text-gray-700 w-full shadow-[0_4px_4px_rgba(0,0,0,0.25)] mb-6 rounded-3xl h-20'>
                         <FcGoogle className='w-9 h-9 mr-6' />
                         Login With Google
                     </button>
