@@ -3,6 +3,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { HiOutlineMail } from 'react-icons/hi'
 import { FiKey, FiEye } from 'react-icons/fi'
 import { AiOutlineUser } from 'react-icons/ai'
+import { BsEyeFill } from 'react-icons/bs'
 import loginImg from '../../../images/login.png'
 import { Link } from 'react-router-dom';
 
@@ -37,7 +38,12 @@ const Register = () => {
                         </div>
                         <div className='relative h-20 w-full mb-8'>
                             <FiKey className='absolute w-5 h-5 md:w-9 md:h-9 top-[30px] left-[11px] md:top-[26px] md:left-[29px]' />
-                            <FiEye onClick={() => setIsShow(!isShow)} className='absolute w-5 h-5 md:w-9 md:h-9 right-5 top-[30px] md:right-5 md:top-[22px]' />
+                            {
+                                isShow ?
+                                    <BsEyeFill onClick={() => setIsShow(!isShow)} className='absolute w-5 h-5 md:w-9 md:h-9 right-5 top-[30px] md:right-5 md:top-[22px]' />
+                                    :
+                                    <FiEye onClick={() => setIsShow(!isShow)} className='absolute w-5 h-5 md:w-9 md:h-9 right-5 top-[30px] md:right-5 md:top-[22px]' />
+                            }
                             <label className='absolute md:left-24 left-10 top-5 text-[12px] font-bold' htmlFor="password">Password</label>
                             <input type={isShow ? 'text' : 'password'} name="password" className='w-full h-full bg-[#F2F2F2] outline-none rounded-2xl pl-10 md:pl-24 pt-8' id="password" placeholder='Enter Password' required />
                         </div>
