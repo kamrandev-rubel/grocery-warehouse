@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import { toast } from 'react-toastify';
 
 
 const Register = () => {
@@ -19,7 +20,7 @@ const Register = () => {
         createUserWithEmailAndPassword,
         user,
         loading
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [signInWithGoogle, GooglrUser, GoogleLoading, GooleError] = useSignInWithGoogle(auth);
     const handleCreateUser = (event) => {
         event.preventDefault()
@@ -42,6 +43,9 @@ const Register = () => {
         setPasswordError('')
         setError(false)
         createUserWithEmailAndPassword(email, password)
+        if (user) {
+            toast('Sent Email Verification')
+        }
     }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 '>
