@@ -88,7 +88,6 @@ const Register = () => {
                             <input type='password' name="confirmPasword" className={`${error ? 'border-2 border-red-500' : ''} w-full h-full bg-[#F2F2F2] outline-none rounded-2xl pl-10 md:pl-24 pt-8`} id="confirmPasword" placeholder='Confirm Password' required />
                             <p className='text-red-500 font-[roboto] mt-1 text-[12px] ml-4'>{passwordError} </p>
                         </div>
-                        <p className='text-right text-lg text-gray-600 cursor-pointer mt-5'>Forget Password?</p>
                         <input type="submit" value="Register" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-[#6C63FF] text-white w-full mb-6 rounded-3xl h-20 mt-16 cursor-pointer' />
                         <p className='text-center mt-7'>Already have an account? <Link className='text-[#6C63FF]' to='/login'>Login</Link></p>
                     </form>
