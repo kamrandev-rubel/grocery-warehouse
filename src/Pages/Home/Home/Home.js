@@ -1,14 +1,14 @@
 import React from 'react';
 import Achieved from '../Achieved/Achieved';
 import Banner from '../Banner/Banner';
-import Products from '../Products/Products';
+import Inventory from '../Inventory/Inventory';
 import Trademark from '../Trademark/Trademark';
 
 const Home = () => {
     return (
         <div>
             <Banner />
-            <Products />
+            <Inventory />
             <Trademark />
             <Achieved />
         </div>

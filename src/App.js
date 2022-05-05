@@ -7,6 +7,8 @@ import Footer from './Pages/Shared/Footer/Footer';
 import Navbar from './Pages/Shared/Navbar/Navbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Inventory from './Pages/Home/Inventory/Inventory';
+import UpdateInventory from './Pages/Home/UpdateInventory/UpdateInventory';
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/inventory' element={<Inventory />} />
+        <Route path='/updateinventory/:id' element={<UpdateInventory />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
       </Routes>

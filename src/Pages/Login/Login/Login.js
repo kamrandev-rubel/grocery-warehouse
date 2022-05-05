@@ -85,7 +85,7 @@ const Login = () => {
                             <p className='text-red-500 font-[roboto] mt-1 text-[12px] ml-4'>{passwordError} </p>
                         </div>
                         <p onClick={handleResetPassword} className='text-right text-lg text-gray-600 cursor-pointer mt-5'>Forget Password?</p>
-                        <input type="submit" value="Login" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-[#6C63FF] text-white w-full mb-6 rounded-3xl h-20 mt-16 cursor-pointer' />
+                        <input type="submit" value="Login" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-[#6C63FF] text-white w-full mb-6 rounded-3xl h-16 mt-16 cursor-pointer' />
                         <p className='text-center mt-7'>Don’t have an account? <Link className='text-[#6C63FF]' to='/register'>Register</Link></p>
                     </form>
                 </div>
