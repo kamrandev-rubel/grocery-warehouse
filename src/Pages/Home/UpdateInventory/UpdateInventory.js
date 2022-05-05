@@ -12,6 +12,16 @@ const UpdateInventory = () => {
                 setProduct(response.data)
             })
     }, [])
+
+    const handleUpdateInventory = async (e) => {
+        e.preventDefault();
+        const quantityValue = e.target.quantity.value;
+        const totalQuantity = parseInt(quantityValue) + quantity;
+        const stockQauntity = { quantity: totalQuantity }
+        const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, stockQauntity)
+        console.log(data)
+    }
+
     return (
         <div>
             <div>
@@ -19,8 +29,8 @@ const UpdateInventory = () => {
             </div>
             <div className='w-full h-[2px] bg-gray-700 mt-10'></div>
             <div className='w-5/12 mx-auto my-12'>
-                <form>
-                    <input type="number" name='number' className='w-full bg-[#ffffff] outline-none rounded-2xl h-16 px-4 font-bold shadow-sm shadow-white' id='number' placeholder='Enter Quantity' required />
+                <form onSubmit={handleUpdateInventory}>
+                    <input type="number" name='quantity' className='w-full bg-[#ffffff] outline-none rounded-2xl h-16 px-4 font-bold shadow-sm shadow-white' id='number' placeholder='Enter Quantity' required />
                     <input type="submit" value="Update Stock" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-full mb-6 rounded-3xl h-16 mt-5 cursor-pointer shadow-sm shadow-primary-color' />
                 </form>
             </div>
