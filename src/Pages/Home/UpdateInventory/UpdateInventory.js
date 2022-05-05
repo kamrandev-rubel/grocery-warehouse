@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const UpdateInventory = () => {
     const [product, setProduct] = useState({})
@@ -11,7 +12,7 @@ const UpdateInventory = () => {
             .then((response) => {
                 setProduct(response.data)
             })
-    }, [])
+    }, [product])
 
     const handleUpdateInventory = async (e) => {
         e.preventDefault();
@@ -19,7 +20,17 @@ const UpdateInventory = () => {
         const totalQuantity = parseInt(quantityValue) + quantity;
         const stockQauntity = { quantity: totalQuantity }
         const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, stockQauntity)
-        console.log(data)
+        if (data.modifiedCount) {
+            toast('Successfully Stock Updated')
+        }
+    }
+    const handleDeliverdBTN = async () => {
+        const deliverdProduct = quantity - 1;
+        const updateStock = { quantity: deliverdProduct }
+        const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, updateStock)
+        if (data.modifiedCount) {
+            toast('Successfully Deliverd Product')
+        }
     }
 
     return (
@@ -35,48 +46,48 @@ const UpdateInventory = () => {
                 </form>
             </div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-40">
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-t-2 border-gray-900">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table className="w-full text-sm text-left text-gray-500 border-t-2 border-gray-900">
+                    <thead className="text-xs text-gray-700 uppercase bg-primary-color dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border-2">
                                 Product name
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border-2">
                                 Price
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border-2">
                                 Quantity
                             </th>
-                            <th scope="col" className="px-6 py-3">
-                                Supplier
+                            <th scope="col" className="px-6 py-3 border-2">
+                                Supplier Name
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border-2">
                                 Description
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 border-2">
                                 <span className="sr-only">Delete</span>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr className="bg-white border-b ">
-                            <th scope="row" className="px-6 py-4 font-[500] text-gray-900 dark:text-white whitespace-nowrap">
+                            <th scope="row" className="px-6 py-4 font-[500] text-gray-900 dark:text-white whitespace-nowrap border-2">
                                 {name}
                             </th>
-                            <td className="px-6 py-4 text-gray-900 font-[500]">
+                            <td className="px-6 py-4 text-gray-900 font-[500] border-2">
                                 {price}
                             </td>
-                            <td className="px-6 py-4 text-gray-900 font-[500]">
+                            <td className="px-6 py-4 text-gray-900 font-[500] border-2">
                                 {quantity}
                             </td>
-                            <td className="px-6 py-4 text-gray-900 font-[500]">
+                            <td className="px-6 py-4 text-gray-900 font-[500] border-2">
                                 {supplier}
                             </td>
-                            <td className="px-6 py-4 text-gray-900 font-[500]">
+                            <td className="px-6 py-4 text-gray-900 font-[500] border-2">
                                 {description}
                             </td>
-                            <td className="px-6 py-4 text-right">
-                                <button className='font-[roboto] font-bold py-2 px-7 bg-primary-color text-gray-900 text-lg rounded-3xl cursor-pointer shadow-sm shadow-primary-color'>Deliverd</button>
+                            <td onClick={handleDeliverdBTN} className="px-6 py-4 text-right">
+                                <button className=' font-bold py-2 px-7 bg-primary-color text-gray-800 rounded-3xl cursor-pointer shadow-sm shadow-primary-color'>Deliverd</button>
                             </td>
                         </tr>
 

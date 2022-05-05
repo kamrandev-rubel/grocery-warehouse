@@ -64,7 +64,7 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                     :
-                                    <Link to="/login" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:p-0">LOGIN</Link>
+                                    <Link to="/login" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-[3px] border-primary-color hover:bg-primary-color hover:font-bold">LOGIN</Link>
                             }
                         </div>
                     </ul>
