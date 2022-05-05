@@ -13,16 +13,6 @@ const Navbar = () => {
     const [isActive, setIsActive] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     const [user] = useAuthState(auth);
-
-    const handleUserProfile = () => {
-        if (isActive === false) {
-            setIsActive(true)
-        }
-        else {
-            setIsActive(false)
-        }
-    }
-    console.log(user)
     return (
         <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -48,7 +38,7 @@ const Navbar = () => {
                         <li>
                             <Link to="/" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">About</Link>
                         </li>
-                        <div onClick={handleUserProfile}>
+                        <div onClick={() => setIsActive(!isActive)}>
                             {
                                 user ?
                                     <div className='relative'>
@@ -66,6 +56,7 @@ const Navbar = () => {
                                         }
                                         <div className={`${isActive ? 'block' : 'hidden'} absolute md:text-right lg:text-left md:left-[-60px] lg:left-[-37px] z-50 shadow-lg`}>
                                             <ul className='bg-gray-500 font-[roboto] font-[500] text-lg p-2 px-4 text-white rounded-t-2xl'>
+                                                <Link to='/' className='block font-bold mb-2'>{user?.displayName}</Link>
                                                 <Link to='/' className='block'>Home</Link>
                                                 <Link to='/' className='block'>Dashboard</Link>
                                                 <Link onClick={() => signOut(auth)} to='/' className='block'>Sign Out</Link>

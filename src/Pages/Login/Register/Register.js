@@ -67,12 +67,12 @@ const Register = () => {
                         <div className='relative h-20 w-full mb-8'>
                             <AiOutlineUser className='absolute w-5 h-5 md:w-9 md:h-9 top-[30px] left-[11px] md:top-[26px] md:left-[29px]' />
                             <label className='absolute md:left-24 left-10 top-6 text-[12px] font-bold' htmlFor="name">Name</label>
-                            <input type="name" name='name' className='w-full h-full bg-[#F2F2F2] outline-none rounded-2xl pl-10 md:pl-24 pt-8' id='name' placeholder='Enter Name' required />
+                            <input type="name" name='name' className='w-full h-full bg-[#F2F2F2] pr-20 outline-none rounded-2xl pl-10 md:pl-24 pt-8' id='name' placeholder='Enter Name' required />
                         </div>
                         <div className='relative h-20 w-full mb-8'>
                             <HiOutlineMail className='absolute w-5 h-5 md:w-9 md:h-9 top-[30px] left-[11px] md:top-[26px] md:left-[29px]' />
                             <label className='absolute md:left-24 left-10 top-6 text-[12px] font-bold' htmlFor="email">Email</label>
-                            <input type="email" name='email' className='w-full h-full bg-[#F2F2F2] outline-none rounded-2xl pl-10 md:pl-24 pt-8' id='email' placeholder='Enter Email' required />
+                            <input type="email" name='email' className='w-full h-full bg-[#F2F2F2] pr-20 outline-none rounded-2xl pl-10 md:pl-24 pt-8' id='email' placeholder='Enter Email' required />
                         </div>
                         <div className='relative h-20 w-full mb-8'>
                             <FiKey className='absolute w-5 h-5 md:w-9 md:h-9 top-[30px] left-[11px] md:top-[26px] md:left-[29px]' />
@@ -83,13 +83,13 @@ const Register = () => {
                                     <FiEye onClick={() => setIsShow(!isShow)} className='absolute cursor-pointer w-5 h-5 md:w-9 md:h-9 right-5 top-[30px] md:right-5 md:top-[22px]' />
                             }
                             <label className='absolute md:left-24 left-10 top-6 text-[12px] font-bold' htmlFor="password">Password</label>
-                            <input type={isShow ? 'text' : 'password'} name="password" className={`${error ? 'border-2 border-red-500' : ''} w-full h-full bg-[#F2F2F2] outline-none rounded-2xl pl-10 md:pl-24 pt-8`} id="password" placeholder='Enter Password' required />
+                            <input type={isShow ? 'text' : 'password'} name="password" className={`${error ? 'border-2 border-red-500' : ''} w-full h-full bg-[#F2F2F2] pr-20 outline-none rounded-2xl pl-10 md:pl-24 pt-8`} id="password" placeholder='Enter Password' required />
                             <p className='text-red-500 font-[roboto] mt-1 text-[12px] ml-4'>{passwordError} </p>
                         </div>
                         <div className='relative h-20 w-full'>
                             <FiKey className='absolute w-5 h-5 md:w-9 md:h-9 top-[30px] left-[11px] md:top-[26px] md:left-[29px]' />
                             <label className='absolute md:left-24 left-10 top-6 text-[12px] font-bold' htmlFor="confirmPasword">Confirm Password</label>
-                            <input type='password' name="confirmPasword" className={`${error ? 'border-2 border-red-500' : ''} w-full h-full bg-[#F2F2F2] outline-none rounded-2xl pl-10 md:pl-24 pt-8`} id="confirmPasword" placeholder='Confirm Password' required />
+                            <input type='password' name="confirmPasword" className={`${error ? 'border-2 border-red-500' : ''} w-full h-full bg-[#F2F2F2] pr-20 outline-none rounded-2xl pl-10 md:pl-24 pt-8`} id="confirmPasword" placeholder='Confirm Password' required />
                             <p className='text-red-500 font-[roboto] mt-1 text-[12px] ml-4'>{passwordError} </p>
                         </div>
                         <input type="submit" value="Register" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-[#6C63FF] text-white w-full mb-6 rounded-3xl h-20 mt-16 cursor-pointer' />
