@@ -14,7 +14,7 @@ const ManageInventory = () => {
     return (
         <div>
             <div>
-                <Link to='' className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-8/12 sm:w-6/12 md:w-3/12  mx-auto mb-6 rounded-3xl h-16 mt-7 cursor-pointer shadow-sm shadow-primary-color'>Add New Item</Link>
+                <Link to='/additem' className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-8/12 sm:w-6/12 md:w-3/12  mx-auto mb-6 rounded-3xl h-16 mt-7 cursor-pointer shadow-sm shadow-primary-color'>Add New Item</Link>
             </div>
             <div className='w-full h-[2px] bg-gray-700 mt-10'></div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-40">
