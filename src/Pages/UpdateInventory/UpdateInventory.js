@@ -25,10 +25,11 @@ const UpdateInventory = () => {
         const stockQauntity = { quantity: totalQuantity }
         const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, stockQauntity)
         if (data.modifiedCount) {
+            e.target.reset()
             toast.success('Successfully Added Stock')
         }
     }
-    const handleDeliverdBTN = async () => {
+    const handleDeliverdBTN = async (e) => {
         if (!quantity <= 0) {
             const deliverdProduct = quantity - 1;
             const updateStock = { quantity: deliverdProduct }

@@ -1,9 +1,20 @@
+import { async } from '@firebase/util';
+import axios from 'axios';
 import React from 'react';
 
 const AddItem = () => {
-    const handleAddNewItem = (e) => {
+    const handleAddNewItem = async (e) => {
         e.preventDefault();
+        const name = e.target.name.value;
+        const price = e.target.price.value;
+        const quantity = e.target.quantity.value;
+        const supplier = e.target.supplier.value;
+        const description = e.target.description.value;
+        const img = e.target.img.value;
+        const addItemData = { name, price, quantity, supplier, description, img }
 
+        const data = axios.post('http://localhost:5000/additem', addItemData)
+        console.log(data)
     }
     return (
         <div>
