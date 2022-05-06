@@ -1,16 +1,23 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const MyItem = () => {
-    const [AllProducts, setAllProducts] = useState([]);
+    const [user] = useAuthState(auth)
+    const [userItems, setUserItems] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/myItem?email=${user?.email}`)
+            .then((response => {
+                setUserItems(response.data)
+            }))
+    }, [])
 
     const handleDeleteItem = async (id) => {
-        // const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
-        // if (data.acknowledged) {
-        //     toast.success('Successfully Item Deleted')
-        // }
+
     }
     return (
         <div>
@@ -47,7 +54,7 @@ const MyItem = () => {
                     </thead>
                     <tbody>
                         {
-                            AllProducts.map(product => {
+                            userItems.map(product => {
                                 const { img, name, price, quantity, supplier, description, _id } = product;
                                 let updateQuantity = quantity
                                 if (quantity <= 0) {

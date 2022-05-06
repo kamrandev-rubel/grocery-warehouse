@@ -1,17 +1,21 @@
 import axios from 'axios';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const AddItem = () => {
+    const [user] = useAuthState(auth)
     const handleAddNewItem = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;
+        const email = user?.email;
         const price = e.target.price.value;
         const quantity = e.target.quantity.value;
         const supplier = e.target.supplier.value;
         const description = e.target.description.value;
         const img = e.target.img.value;
-        const addItemData = { name, price, quantity, supplier, description, img }
+        const addItemData = { name, email, price, quantity, supplier, description, img }
 
         const { data } = await axios.post('http://localhost:5000/additem', addItemData)
         if (data.insertedId) {
