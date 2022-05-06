@@ -14,10 +14,13 @@ const MyItem = () => {
             .then((response => {
                 setUserItems(response.data)
             }))
-    }, [])
+    }, [userItems])
 
     const handleDeleteItem = async (id) => {
-
+        const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
+        if (data.acknowledged) {
+            toast.success('Successfully Item Deleted')
+        }
     }
     return (
         <div>
