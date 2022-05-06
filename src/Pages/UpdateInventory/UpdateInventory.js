@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const UpdateInventory = () => {
     const [product, setProduct] = useState({})
     const { id } = useParams()
-    const { name, price, quantity, supplier, description } = product;
+    const { img, name, price, quantity, supplier, description } = product;
     let updateQuantity = quantity
     if (quantity <= 0) {
         updateQuantity = <p className='text-red-600'>Sold</p>
@@ -21,12 +21,14 @@ const UpdateInventory = () => {
     const handleUpdateInventory = async (e) => {
         e.preventDefault();
         const quantityValue = e.target.quantity.value;
-        const totalQuantity = parseInt(quantityValue) + quantity;
-        const stockQauntity = { quantity: totalQuantity }
-        const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, stockQauntity)
-        if (data.modifiedCount) {
-            e.target.reset()
-            toast.success('Successfully Added Stock')
+        if (quantityValue > 0) {
+            const totalQuantity = parseInt(quantityValue) + quantity;
+            const stockQauntity = { quantity: totalQuantity }
+            const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, stockQauntity)
+            if (data.modifiedCount) {
+                e.target.reset()
+                toast.success('Successfully Added Stock')
+            }
         }
     }
     const handleDeliverdBTN = async (e) => {
@@ -45,13 +47,13 @@ const UpdateInventory = () => {
     return (
         <div>
             <div>
-                <Link to='/manageinventory' className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-8/12 sm:w-6/12 md:w-3/12  mx-auto mb-6 rounded-3xl h-16 mt-7 cursor-pointer shadow-sm shadow-primary-color'>Manage All Inventory</Link>
+                <Link to='/manageinventory' className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-8/12 sm:w-6/12 md:w-3/12  mx-auto mb-6 rounded-lg h-14 mt-7 cursor-pointer shadow-sm shadow-primary-color'>Manage All Inventory</Link>
             </div>
             <div className='w-full h-[2px] bg-gray-700 mt-10'></div>
             <div className='w-8/12 sm:w-6/12 md:w-4/12 mx-auto my-12'>
                 <form onSubmit={handleUpdateInventory}>
-                    <input type="number" name='quantity' className='w-full bg-[#ffffff] outline-none rounded-2xl h-16 px-4 font-bold shadow-sm shadow-white' id='number' placeholder='Enter Quantity' required />
-                    <input type="submit" value="Update Stock" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-full mb-6 rounded-3xl h-16 mt-5 cursor-pointer shadow-sm shadow-primary-color' />
+                    <input type="number" name='quantity' className='w-full bg-[#ffffff] outline-none rounded-lg h-14 px-4 font-bold shadow-sm shadow-white' id='number' placeholder='Enter Quantity' required />
+                    <input type="submit" value="Update Stock" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-full mb-6 rounded-lg h-14 mt-5 cursor-pointer shadow-sm shadow-primary-color' />
                 </form>
             </div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-40">
@@ -59,7 +61,10 @@ const UpdateInventory = () => {
                     <thead className="text-xs text-gray-700 uppercase bg-primary-color dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-6 py-3 border-2">
-                                Product name
+                                Image
+                            </th>
+                            <th scope="col" className="px-6 py-3 border-2">
+                                Product Name
                             </th>
                             <th scope="col" className="px-6 py-3 border-2">
                                 Price
@@ -80,6 +85,9 @@ const UpdateInventory = () => {
                     </thead>
                     <tbody>
                         <tr className="bg-white border-b hover:bg-gray-100 ">
+                            <th scope="row" className="px-6 py-4 font-[500] text-gray-900 dark:text-white whitespace-nowrap border-2">
+                                <img src={img} className='w-10 h-14 rounded-3xl' alt="" />
+                            </th>
                             <th scope="row" className="px-6 py-4 font-[500] text-gray-900  whitespace-nowrap border-2">
                                 {name}
                             </th>

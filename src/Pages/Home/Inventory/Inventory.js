@@ -41,7 +41,7 @@ const Inventory = () => {
                                 <p className='font-bold text-gray-900 pl-3 mt-2'>Supplier: <span className='text-sm text-gray-700'>{supplier}</span></p>
                                 <p className='font-bold text-gray-900 pl-3'>Description: <span className='text-sm text-gray-700'>{description}</span></p>
                                 <div className='flex justify-center mt-3 mb-2'>
-                                    <Link to={`/updateinventory/${_id}`} className='font-[roboto] text-md text-gray-900 font-bold bg-primary-color px-8 py-2 rounded-md'>UPDATE</Link>
+                                    <Link to={`/updateinventory/${_id}`} className='text-md text-gray-900 font-bold bg-primary-color px-8 py-2 rounded-md'>UPDATE</Link>
                                 </div>
                             </div>
                         )
