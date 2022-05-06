@@ -57,8 +57,9 @@ const Navbar = () => {
                                         <div className={`${isActive ? 'block' : 'hidden'} absolute md:text-right lg:text-left md:left-[-60px] lg:left-[-37px] z-50 shadow-lg`}>
                                             <ul className='bg-gray-500 font-[roboto] font-[500] text-lg p-2 px-4 text-white rounded-t-2xl'>
                                                 <Link to='/' className='block font-bold mb-2'>{user?.displayName}</Link>
-                                                <Link to='/' className='block'>Home</Link>
-                                                <Link to='/' className='block'>Dashboard</Link>
+                                                <Link to='/myitem' className='block'>My Item</Link>
+                                                <Link to='/additem' className='block'>Add Item</Link>
+                                                <Link to='/manageinventory' className='block'>Manage Inventory</Link>
                                                 <Link onClick={() => signOut(auth)} to='/' className='block'>Sign Out</Link>
                                             </ul>
                                         </div>

@@ -7,6 +7,10 @@ const UpdateInventory = () => {
     const [product, setProduct] = useState({})
     const { id } = useParams()
     const { name, price, quantity, supplier, description } = product;
+    let updateQuantity = quantity
+    if (quantity <= 0) {
+        updateQuantity = <p className='text-red-600'>Sold</p>
+    }
     useEffect(() => {
         axios.get(`http://localhost:5000/product/${id}`)
             .then((response) => {
@@ -21,15 +25,19 @@ const UpdateInventory = () => {
         const stockQauntity = { quantity: totalQuantity }
         const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, stockQauntity)
         if (data.modifiedCount) {
-            toast('Successfully Stock Updated')
+            toast.success('Successfully Added Stock')
         }
     }
     const handleDeliverdBTN = async () => {
-        const deliverdProduct = quantity - 1;
-        const updateStock = { quantity: deliverdProduct }
-        const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, updateStock)
-        if (data.modifiedCount) {
-            toast('Successfully Deliverd Product')
+        if (!quantity <= 0) {
+            const deliverdProduct = quantity - 1;
+            const updateStock = { quantity: deliverdProduct }
+            const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, updateStock)
+            if (data.modifiedCount) {
+                toast.success('Successfully Deliverd Product')
+            }
+        } else {
+            toast.warning('Your Stock is Empty')
         }
     }
 
@@ -78,7 +86,7 @@ const UpdateInventory = () => {
                                 {price}
                             </td>
                             <td className="px-6 py-4 text-gray-900 font-[500] border-2">
-                                {quantity}
+                                {updateQuantity}
                             </td>
                             <td className="px-6 py-4 text-gray-900 font-[500] border-2">
                                 {supplier}
