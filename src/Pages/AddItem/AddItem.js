@@ -1,6 +1,6 @@
-import { async } from '@firebase/util';
 import axios from 'axios';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const AddItem = () => {
     const handleAddNewItem = async (e) => {
@@ -13,8 +13,11 @@ const AddItem = () => {
         const img = e.target.img.value;
         const addItemData = { name, price, quantity, supplier, description, img }
 
-        const data = axios.post('http://localhost:5000/additem', addItemData)
-        console.log(data)
+        const { data } = await axios.post('http://localhost:5000/additem', addItemData)
+        if (data.insertedId) {
+            e.target.reset();
+            toast('Successfully Added Item')
+        }
     }
     return (
         <div>

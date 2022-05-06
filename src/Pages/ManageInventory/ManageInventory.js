@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ManageInventory = () => {
     const [AllProducts, setAllProducts] = useState([]);
@@ -9,8 +10,16 @@ const ManageInventory = () => {
         axios.get('http://localhost:5000/products')
             .then((response) => {
                 setAllProducts(response.data)
-            })
-    }, [])
+            });
+    }, [AllProducts])
+    const handleDeleteItem = async (id) => {
+        const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
+        if (data.acknowledged) {
+            toast.success('Successfully Item Deleted')
+        }
+
+    }
+
     return (
         <div>
             <div>
@@ -37,34 +46,44 @@ const ManageInventory = () => {
                                 Description
                             </th>
                             <th scope="col" className="px-6 py-3 border-2">
-                                <span className="sr-only">Delete</span>
+                                Update Item
+                            </th>
+                            <th scope="col" className="px-6 py-3 border-2">
+                                Remove Item
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            AllProducts.map(product => (
-                                <tr key={product._id} className="bg-white border-b ">
-                                    <th scope="row" className="px-6 py-4 font-[500] text-gray-900 dark:text-white whitespace-nowrap border-2">
-                                        {product?.name}
-                                    </th>
-                                    <td className="px-6 py-4 text-gray-900 font-[500] border-2">
-                                        {product?.price}
-                                    </td>
-                                    <td className="px-6 py-4 text-gray-900 font-[500] border-2">
-                                        {product?.quantity}
-                                    </td>
-                                    <td className="px-6 py-4 text-gray-900 font-[500] border-2">
-                                        {product?.supplier}
-                                    </td>
-                                    <td className="px-6 py-4 text-gray-900 font-[500] border-2">
-                                        {product?.description}
-                                    </td>
-                                    <td className="px-6 py-4 text-right">
-                                        <button className=' font-bold py-2 px-7 bg-primary-color rounded-3xl cursor-pointer shadow-sm shadow-primary-color text-red-600'>Delete</button>
-                                    </td>
-                                </tr>
-                            ))
+                            AllProducts.map(product => {
+                                const { name, price, quantity, supplier, description, _id } = product;
+                                return (
+                                    <tr key={product._id} className="bg-white border-b hover:bg-gray-100">
+                                        <th scope="row" className="px-6 py-4 font-[500] text-gray-900 dark:text-white whitespace-nowrap border-2">
+                                            {name}
+                                        </th>
+                                        <td className="px-6 py-4 text-gray-900 font-[500] border-2">
+                                            {price}
+                                        </td>
+                                        <td className="px-6 py-4 text-gray-900 font-[500] border-2">
+                                            {quantity}
+                                        </td>
+                                        <td className="px-6 py-4 text-gray-900 font-[500] border-2">
+                                            {supplier}
+                                        </td>
+                                        <td className="px-6 py-4 text-gray-900 font-[500] border-2">
+                                            {description}
+                                        </td>
+                                        <td className="px-6 py-4 text-right border-2">
+                                            <Link to={`/updateinventory/${_id}`} className=' font-bold py-2 px-7 bg-primary-color rounded-3xl cursor-pointer shadow-sm shadow-primary-color text-gray-800'>Update</Link>
+                                        </td>
+                                        <td className="px-6 py-4 text-right border-2">
+                                            <button onClick={() => handleDeleteItem(_id)} className=' font-bold py-2 px-7 bg-primary-color rounded-3xl cursor-pointer shadow-sm shadow-primary-color text-red-600'>Delete</button>
+                                        </td>
+                                    </tr>
+                                )
+                            }
+                            )
                         }
                     </tbody>
                 </table>

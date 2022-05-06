@@ -79,8 +79,8 @@ const UpdateInventory = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="bg-white border-b ">
-                            <th scope="row" className="px-6 py-4 font-[500] text-gray-900 dark:text-white whitespace-nowrap border-2">
+                        <tr className="bg-white border-b hover:bg-gray-100 ">
+                            <th scope="row" className="px-6 py-4 font-[500] text-gray-900  whitespace-nowrap border-2">
                                 {name}
                             </th>
                             <td className="px-6 py-4 text-gray-900 font-[500] border-2">
