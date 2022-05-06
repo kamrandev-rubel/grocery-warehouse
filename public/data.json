@@ -1,5 +1,21 @@
 [
     {
+        "price": "$21.58",
+        "img": "https://i.ibb.co/k4mx5xy/81-U07-QXAJFL-AC-SY741.jpg",
+        "quantity": 2,
+        "name": "Nescafe classic coffee",
+        "supplier": "Ali Khan",
+        "description": "sit amet consectetur adipisicing"
+    },
+    {
+        "price": "$15.28",
+        "img": "https://i.ibb.co/xDjN72Q/sugar.jpg",
+        "quantity": 2,
+        "name": "Grain White Sugar",
+        "supplier": "Azam Sur",
+        "description": "sit amet consectetur adipisicing"
+    },
+    {
         "price": "$53.93",
         "img": "https://i.ibb.co/zV3qvnh/5-pure-and-hygenic-sugar-pouch-refined-sugar-madhur-crystal-original-imafu775g3xgbbde.jpg",
         "quantity": 2,
@@ -37,14 +53,6 @@
         "quantity": 2,
         "name": "Best Kisses",
         "supplier": "Rajuttaiam",
-        "description": "sit amet consectetur adipisicing"
-    },
-    {
-        "price": "$71.78",
-        "img": "https://i.ibb.co/KDc0h3L/download-4.jpg",
-        "quantity": 2,
-        "name": "Maggi Nodles",
-        "supplier": "Rahim Ullah",
         "description": "sit amet consectetur adipisicing"
     },
     {

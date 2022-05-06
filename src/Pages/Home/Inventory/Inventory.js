@@ -20,7 +20,7 @@ const Inventory = () => {
                 {
                     products.map(product => (
                         <div key={product._id} className='border-2 border-primary-color shadow-lg rounded-2xl p-3 bg-white'>
-                            <img src={product?.img} className='w-56 h-56 mx-auto' alt="" />
+                            <img src={product?.img} className='w-56 h-60 mx-auto' alt="" />
                             <h3 className='text-center my-2 mt-3 font-bold text-gray-900'>{product?.name}</h3>
                             <div className='flex justify-between px-3'>
                                 <div>
