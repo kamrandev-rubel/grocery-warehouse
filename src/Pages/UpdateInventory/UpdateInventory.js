@@ -36,10 +36,10 @@ const UpdateInventory = () => {
     return (
         <div>
             <div>
-                <button className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-3/12 mx-auto mb-6 rounded-3xl h-16 mt-5 cursor-pointer shadow-sm shadow-primary-color'>Manage Inventory</button>
+                <Link to='/manageinventory' className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-8/12 sm:w-6/12 md:w-3/12  mx-auto mb-6 rounded-3xl h-16 mt-7 cursor-pointer shadow-sm shadow-primary-color'>Manage All Inventory</Link>
             </div>
             <div className='w-full h-[2px] bg-gray-700 mt-10'></div>
-            <div className='w-5/12 mx-auto my-12'>
+            <div className='w-8/12 sm:w-6/12 md:w-4/12 mx-auto my-12'>
                 <form onSubmit={handleUpdateInventory}>
                     <input type="number" name='quantity' className='w-full bg-[#ffffff] outline-none rounded-2xl h-16 px-4 font-bold shadow-sm shadow-white' id='number' placeholder='Enter Quantity' required />
                     <input type="submit" value="Update Stock" className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-full mb-6 rounded-3xl h-16 mt-5 cursor-pointer shadow-sm shadow-primary-color' />
