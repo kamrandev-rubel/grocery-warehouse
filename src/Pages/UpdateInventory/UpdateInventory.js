@@ -9,7 +9,7 @@ const UpdateInventory = () => {
     const { img, name, price, quantity, supplier, description } = product;
     let updateQuantity = quantity
     if (quantity <= 0) {
-        updateQuantity = <p className='text-red-600'>Sold</p>
+        updateQuantity = <><span className='text-red-600'>Sold</span></>
     }
     useEffect(() => {
         axios.get(`http://localhost:5000/product/${id}`)

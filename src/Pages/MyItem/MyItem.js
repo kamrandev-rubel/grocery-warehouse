@@ -1,24 +1,17 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const ManageInventory = () => {
+const MyItem = () => {
     const [AllProducts, setAllProducts] = useState([]);
 
-    useEffect(() => {
-        axios.get('http://localhost:5000/products')
-            .then((response) => {
-                setAllProducts(response.data)
-            });
-    }, [AllProducts])
     const handleDeleteItem = async (id) => {
-        const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
-        if (data.acknowledged) {
-            toast.success('Successfully Item Deleted')
-        }
+        // const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
+        // if (data.acknowledged) {
+        //     toast.success('Successfully Item Deleted')
+        // }
     }
-
     return (
         <div>
             <div>
@@ -48,9 +41,6 @@ const ManageInventory = () => {
                                 Description
                             </th>
                             <th scope="col" className="px-6 py-3 border-2">
-                                Update Item
-                            </th>
-                            <th scope="col" className="px-6 py-3 border-2">
                                 Remove Item
                             </th>
                         </tr>
@@ -61,9 +51,7 @@ const ManageInventory = () => {
                                 const { img, name, price, quantity, supplier, description, _id } = product;
                                 let updateQuantity = quantity
                                 if (quantity <= 0) {
-                                    updateQuantity = <>
-                                        <span className='text-red-600'>Sold</span>
-                                    </>
+                                    updateQuantity = <p className='text-red-600'>Sold</p>
                                 }
                                 return (
                                     <tr key={product._id} className="bg-white border-b hover:bg-gray-100">
@@ -86,9 +74,6 @@ const ManageInventory = () => {
                                             {description}
                                         </td>
                                         <td className="px-6 py-4 text-right border-2">
-                                            <Link to={`/updateinventory/${_id}`} className=' font-bold py-2 px-7 bg-primary-color rounded-3xl cursor-pointer shadow-sm shadow-primary-color text-green-500'>Update</Link>
-                                        </td>
-                                        <td className="px-6 py-4 text-right border-2">
                                             <button onClick={() => handleDeleteItem(_id)} className=' font-bold py-2 px-7 bg-primary-color rounded-3xl cursor-pointer shadow-sm shadow-primary-color text-red-600'>Delete</button>
                                         </td>
                                     </tr>
@@ -103,4 +88,4 @@ const ManageInventory = () => {
     );
 };
 
-export default ManageInventory;
+export default MyItem;

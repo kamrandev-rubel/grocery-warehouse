@@ -4,7 +4,7 @@ import { HiOutlineMail } from 'react-icons/hi'
 import { BsEyeFill } from 'react-icons/bs'
 import { FiKey, FiEye } from 'react-icons/fi'
 import loginImg from '../../../images/login.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
@@ -16,14 +16,24 @@ const Login = () => {
     const [error, setError] = useState(false)
     const [passwordError, setPasswordError] = useState('')
     const emailRef = useRef()
+    let navigate = useNavigate();
+    let location = useLocation();
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         loginError,
     ] = useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle, GooglrUser, GoogleLoading, GooleError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, googleLoading, gooleError] = useSignInWithGoogle(auth);
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+
+
+
+    let from = location.state?.from?.pathname || "/";
+
+    if (user || googleUser) {
+        navigate(from, { replace: true })
+    }
 
     const handleLoginUser = (event) => {
         event.preventDefault();

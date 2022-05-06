@@ -22,7 +22,7 @@ const Inventory = () => {
                         const { name, price, quantity, supplier, description, _id } = product;
                         let updateQuantity = quantity
                         if (quantity <= 0) {
-                            updateQuantity = <p className='text-red-600'>Sold</p>
+                            updateQuantity = <><span className='text-red-600'>Sold</span></>
                         }
                         return (
                             <div key={product._id} className='border-2 border-primary-color shadow-lg rounded-2xl p-3 bg-white'>

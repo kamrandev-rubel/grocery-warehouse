@@ -11,6 +11,8 @@ import Inventory from './Pages/Home/Inventory/Inventory';
 import UpdateInventory from './Pages/UpdateInventory/UpdateInventory';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import AddItem from './Pages/AddItem/AddItem';
+import MyItem from './Pages/MyItem/MyItem';
+import PrivetRoute from './Pages/Login/PrivetRoute/PrivetRoute';
 
 function App() {
   return (
@@ -20,9 +22,26 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/inventory' element={<Inventory />} />
-        <Route path='/updateinventory/:id' element={<UpdateInventory />} />
-        <Route path='/manageinventory' element={<ManageInventory />} />
-        <Route path='/additem' element={<AddItem />} />
+        <Route path='/updateinventory/:id' element={
+          <PrivetRoute>
+            <UpdateInventory />
+          </PrivetRoute>
+        } />
+        <Route path='/manageinventory' element={
+          <PrivetRoute>
+            <ManageInventory />
+          </PrivetRoute>
+        } />
+        <Route path='/additem' element={
+          <PrivetRoute>
+            <AddItem />
+          </PrivetRoute>
+        } />
+        <Route path='/myitem' element={
+          <PrivetRoute>
+            <MyItem />
+          </PrivetRoute>
+        } />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
       </Routes>
