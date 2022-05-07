@@ -69,8 +69,8 @@ const Navbar = () => {
                                                     }
                                                 </div>
                                                 <div>
-                                                    <Link to='/' className='block font-bold text-center'>{user?.displayName}</Link>
-                                                    <Link to='/' className='block font-[500] text-sm mb-2 text-gray-600 text-center'>{user?.email}</Link>
+                                                    <Link to='' className='block font-bold text-center'>{user?.displayName}</Link>
+                                                    <Link to='' className='block font-[500] text-sm mb-2 text-gray-600 text-center'>{user?.email}</Link>
                                                     <div className='w-full h-[1px] bg-slate-400'></div>
                                                     <Link to='/myitem' className='block py-1 px-4 hover:bg-slate-200'>My Item</Link>
                                                     <Link to='/additem' className='block py-1 px-4 hover:bg-slate-200'>Add Item</Link>
