@@ -8,6 +8,7 @@ import loginImg from '../../../images/login.png'
 import { Link } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 
@@ -22,7 +23,10 @@ const Register = () => {
         loading
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [signInWithGoogle, GooglrUser, GoogleLoading, GooleError] = useSignInWithGoogle(auth);
-    const handleCreateUser = (event) => {
+    const [updateProfile, updating] = useUpdateProfile(auth);
+
+
+    const handleCreateUser = async (event) => {
         event.preventDefault()
         const name = event.target.name.value;
         const email = event.target.email.value;
@@ -42,7 +46,8 @@ const Register = () => {
 
         setPasswordError('')
         setError(false)
-        createUserWithEmailAndPassword(email, password)
+        await createUserWithEmailAndPassword(email, password)
+        await updateProfile({ displayName: name })
         if (user) {
             toast('Sent Email Verification')
         }

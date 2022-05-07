@@ -11,10 +11,11 @@ const AddItem = () => {
         const name = e.target.name.value;
         const email = user?.email;
         const price = e.target.price.value;
-        const quantity = e.target.quantity.value;
+        const quantity = parseInt(e.target.quantity.value);
         const supplier = e.target.supplier.value;
         const description = e.target.description.value;
         const img = e.target.img.value;
+        console.log(quantity)
         const addItemData = { name, email, price, quantity, supplier, description, img }
 
         const { data } = await axios.post('http://localhost:5000/additem', addItemData)
