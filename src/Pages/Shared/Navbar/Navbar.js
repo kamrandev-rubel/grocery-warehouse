@@ -50,17 +50,33 @@ const Navbar = () => {
                                                 </>
                                                 :
                                                 <>
-                                                    <FaUserCircle className='text-5xl text-gray-500 cursor-pointer inline-block' />
+                                                    <FaUserCircle className='text-5xl text-gray-400 cursor-pointer inline-block' />
                                                     <RiArrowDownSFill className='inline-block text-4xl cursor-pointer' />
                                                 </>
                                         }
-                                        <div className={`${isActive ? 'block' : 'hidden'} absolute md:text-right lg:text-left md:left-[-60px] lg:left-[-37px] z-50 shadow-lg`}>
-                                            <ul className='bg-gray-500 font-[roboto] font-[500] text-lg p-2 px-4 text-white rounded-t-2xl'>
-                                                <Link to='/' className='block font-bold mb-2'>{user?.displayName}</Link>
-                                                <Link to='/myitem' className='block'>My Item</Link>
-                                                <Link to='/additem' className='block'>Add Item</Link>
-                                                <Link to='/manageinventory' className='block'>Manage Inventory</Link>
-                                                <Link onClick={() => signOut(auth)} to='/' className='block'>Sign Out</Link>
+                                        <div className={`${isActive ? 'block' : 'hidden'} absolute w-64 right-[-83] left-[-200px] z-50 shadow-2xl order`}>
+                                            <ul className='bg-white font-[roboto] font-[500] text-lg text-gray-900 rounded-lg'>
+                                                <div className='p-2 px-4 '>
+                                                    {
+                                                        user?.photoURL ?
+                                                            <>
+                                                                <img src={user?.photoURL} className='w-24 h-24 rounded-full cursor-pointer mb-2.5 mx-auto' alt="" />
+                                                            </>
+                                                            :
+                                                            <>
+                                                                <FaUserCircle className='text-5xl text-gray-400 cursor-pointer w-24 h-24 mx-auto' />
+                                                            </>
+                                                    }
+                                                </div>
+                                                <div>
+                                                    <Link to='/' className='block font-bold text-center'>{user?.displayName}</Link>
+                                                    <Link to='/' className='block font-[500] text-sm mb-2 text-gray-600 text-center'>{user?.email}</Link>
+                                                    <div className='w-full h-[1px] bg-slate-400'></div>
+                                                    <Link to='/myitem' className='block py-1 px-4 hover:bg-slate-200'>My Item</Link>
+                                                    <Link to='/additem' className='block py-1 px-4 hover:bg-slate-200'>Add Item</Link>
+                                                    <Link to='/manageinventory' className='block py-1 px-4 hover:bg-slate-200'>Manage Inventory</Link>
+                                                    <Link onClick={() => signOut(auth)} to='/' className='block py-1 px-4 hover:bg-slate-200'>Sign Out</Link>
+                                                </div>
                                             </ul>
                                         </div>
                                     </div>
