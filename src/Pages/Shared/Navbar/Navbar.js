@@ -8,6 +8,7 @@ import { RiArrowDownSFill } from 'react-icons/ri'
 import { HiMenuAlt1 } from 'react-icons/hi'
 import { IoClose } from 'react-icons/io5'
 import { signOut } from 'firebase/auth';
+import CustomLink from '../CustomLink/CustomLink';
 
 const Navbar = () => {
     const [isActive, setIsActive] = useState(false);
@@ -30,13 +31,13 @@ const Navbar = () => {
                 <div className={`${isOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`}>
                     <ul className="flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                         <li>
-                            <Link to="/home" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">Home</Link>
+                            <CustomLink to="/home" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">Home</CustomLink>
                         </li>
                         <li>
-                            <Link to="/inventory" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">Inventory</Link>
+                            <CustomLink to="/inventory" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">Inventory</CustomLink>
                         </li>
                         <li>
-                            <Link to="/blogs" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">Blogs</Link>
+                            <CustomLink to="/blogs" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">Blogs</CustomLink>
                         </li>
                         <div onClick={() => setIsActive(!isActive)}>
                             {
