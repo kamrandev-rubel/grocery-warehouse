@@ -11,6 +11,7 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 
 const Register = () => {
@@ -54,6 +55,7 @@ const Register = () => {
     }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 '>
+            <Helmet title='Register' />
             <div className='bg-white p-11'>
                 <div>
                     <h2 className='text-5xl font-bold mb-11 leading-[56px] text-center'>Welcome to <br /> <span className='text-[#6C63FF]'>Grocery Store</span></h2>

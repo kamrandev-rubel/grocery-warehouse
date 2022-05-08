@@ -1,8 +1,10 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Blogs = () => {
     return (
         <div className='container mx-auto'>
+            <Helmet title='Blogs' />
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10 my-4 p-4'>
                 <div>
                     <h2 className='text-lg font-bold mb-5 bg-primary-color text-gray-900 p-2 rounded-sm'>Difference between Nodejs and JavaScript </h2>

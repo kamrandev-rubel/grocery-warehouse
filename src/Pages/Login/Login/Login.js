@@ -11,6 +11,7 @@ import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 import axios from 'axios'
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const [isShow, setIsShow] = useState(false)
@@ -65,6 +66,7 @@ const Login = () => {
     }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
+            <Helmet title='Login' />
             <div className='bg-[#E0DCDC] flex items-center w-full6'>
                 <img src={loginImg} alt="" className='w-full' />
             </div>

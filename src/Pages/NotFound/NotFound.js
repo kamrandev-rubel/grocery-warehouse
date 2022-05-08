@@ -1,10 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import './NotFound.css'
 
 const NotFound = () => {
     return (
         <div>
+            <Helmet title='Not Found' />
             <div id="notfound">
                 <div className="notfound">
                     <div className="notfound-404">

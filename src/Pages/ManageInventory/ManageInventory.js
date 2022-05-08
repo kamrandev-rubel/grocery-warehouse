@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -26,6 +27,7 @@ const ManageInventory = () => {
 
     return (
         <div>
+            <Helmet title='Manage Inventory' />
             <div>
                 <Link to='/additem' className='flex items-center justify-center font-[roboto] font-bold text-lg bg-primary-color text-gray-700 w-8/12 sm:w-6/12 md:w-3/12  mx-auto mb-6 rounded-lg h-14 mt-7 cursor-pointer shadow-sm shadow-primary-color'>Add New Item</Link>
             </div>
