@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
@@ -13,6 +13,8 @@ import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import AddItem from './Pages/AddItem/AddItem';
 import MyItem from './Pages/MyItem/MyItem';
 import PrivetRoute from './Pages/Login/PrivetRoute/PrivetRoute';
+import NotFound from './Pages/NotFound/NotFound';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/inventory' element={<Inventory />} />
+        <Route path='/blogs' element={<Blogs />} />
         <Route path='/updateinventory/:id' element={
           <PrivetRoute>
             <UpdateInventory />
@@ -44,6 +47,7 @@ function App() {
         } />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
       <ToastContainer />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import logo from '../../../images/logo.png'
 import { FaUserCircle } from 'react-icons/fa'
@@ -10,8 +10,8 @@ import { IoClose } from 'react-icons/io5'
 import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
-    const [isActive, setIsActive] = useState(false)
-    const [isOpen, setIsOpen] = useState(false)
+    const [isActive, setIsActive] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const [user] = useAuthState(auth);
     return (
         <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
