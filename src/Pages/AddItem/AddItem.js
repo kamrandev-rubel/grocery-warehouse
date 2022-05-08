@@ -18,7 +18,7 @@ const AddItem = () => {
         console.log(quantity)
         const addItemData = { name, email, price, quantity, supplier, description, img }
 
-        const { data } = await axios.post('http://localhost:5000/additem', addItemData)
+        const { data } = await axios.post('https://grocery-store-warehouse.herokuapp.com/additem', addItemData)
         if (data.insertedId) {
             e.target.reset();
             toast.success('Successfully Added Item')

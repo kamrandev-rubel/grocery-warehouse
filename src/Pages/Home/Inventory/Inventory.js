@@ -6,7 +6,7 @@ const Inventory = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/products')
+        axios.get('https://grocery-store-warehouse.herokuapp.com/products')
             .then((response) => {
                 const allProducts = response.data;
                 const groceries = allProducts.slice(0, 6);

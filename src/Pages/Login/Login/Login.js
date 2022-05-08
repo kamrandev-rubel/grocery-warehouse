@@ -48,7 +48,7 @@ const Login = () => {
         setError(false)
         setPasswordError('')
         await signInWithEmailAndPassword(email, password)
-        const { data } = await axios.post('http://localhost:5000/login', { email })
+        const { data } = await axios.post('https://grocery-store-warehouse.herokuapp.com/login', { email })
         if (data) {
             localStorage.setItem('accessToken', data)
             navigate(from, { replace: true })

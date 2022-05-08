@@ -8,7 +8,7 @@ const ManageInventory = () => {
     const [isRefresh, setIsRefresh] = useState(false)
 
     useEffect(() => {
-        axios.get('http://localhost:5000/products')
+        axios.get('https://grocery-store-warehouse.herokuapp.com/products')
             .then((response) => {
                 setAllProducts(response.data)
             });
@@ -16,7 +16,7 @@ const ManageInventory = () => {
     const handleDeleteItem = async (id) => {
         const confirm = window.confirm('Are You Sure.?')
         if (confirm) {
-            const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
+            const { data } = await axios.delete(`https://grocery-store-warehouse.herokuapp.com/removeItem/${id}`)
             if (data.acknowledged) {
                 setIsRefresh(!isRefresh)
                 toast.success('Successfully Item Deleted')

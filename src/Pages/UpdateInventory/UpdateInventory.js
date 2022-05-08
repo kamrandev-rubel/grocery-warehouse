@@ -13,7 +13,7 @@ const UpdateInventory = () => {
         updateQuantity = <><span className='text-red-600'>Sold</span></>
     }
     useEffect(() => {
-        axios.get(`http://localhost:5000/product/${id}`)
+        axios.get(`https://grocery-store-warehouse.herokuapp.com/product/${id}`)
             .then((response) => {
                 setProduct(response.data)
             })
@@ -25,7 +25,7 @@ const UpdateInventory = () => {
         if (quantityValue > 0) {
             const totalQuantity = parseInt(quantityValue) + quantity;
             const stockQauntity = { quantity: totalQuantity }
-            const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, stockQauntity)
+            const { data } = await axios.put(`https://grocery-store-warehouse.herokuapp.com/updateproduct/${id}`, stockQauntity)
             if (data.modifiedCount) {
                 e.target.reset()
                 setIsRefresh(!isRefresh)
@@ -37,7 +37,7 @@ const UpdateInventory = () => {
         if (!quantity <= 0) {
             const deliverdProduct = quantity - 1;
             const updateStock = { quantity: deliverdProduct }
-            const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, updateStock)
+            const { data } = await axios.put(`https://grocery-store-warehouse.herokuapp.com/updateproduct/${id}`, updateStock)
             if (data.modifiedCount) {
                 setIsRefresh(!isRefresh)
                 toast.success('Successfully Deliverd Product')

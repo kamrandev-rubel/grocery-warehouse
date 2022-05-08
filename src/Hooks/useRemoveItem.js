@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 
 const useRemoveItem = async (id) => {
-    const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
+    const { data } = await axios.delete(`https://grocery-store-warehouse.herokuapp.com/removeItem/${id}`)
     if (data.acknowledged) {
         toast.success('Successfully Item Deleted')
     }
