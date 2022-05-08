@@ -8,6 +8,7 @@ import auth from '../../firebase.init';
 const MyItem = () => {
     const [user] = useAuthState(auth)
     const [userItems, setUserItems] = useState([]);
+    const [isRefresh, setIsRefresh] = useState(false)
 
     useEffect(() => {
         axios.get(`http://localhost:5000/myItem?email=${user?.email}`, {
@@ -18,12 +19,16 @@ const MyItem = () => {
             .then((response => {
                 setUserItems(response.data)
             }))
-    }, [])
+    }, [isRefresh])
 
     const handleDeleteItem = async (id) => {
-        const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
-        if (data.acknowledged) {
-            toast.success('Successfully Item Deleted')
+        const confirm = window.confirm('Are You Sure.?')
+        if (confirm) {
+            const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
+            if (data.acknowledged) {
+                setIsRefresh(!isRefresh)
+                toast.success('Successfully Item Deleted')
+            }
         }
     }
     return (
@@ -76,7 +81,7 @@ const MyItem = () => {
                                             {name}
                                         </th>
                                         <td className="px-6 py-4 text-gray-900 font-[500] border-2">
-                                            {price}
+                                            ${price}
                                         </td>
                                         <td className="px-6 py-4 text-gray-900 font-[500] border-2">
                                             {updateQuantity}

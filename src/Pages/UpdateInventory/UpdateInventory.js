@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 
 const UpdateInventory = () => {
     const [product, setProduct] = useState({})
+    const [isRefresh, setIsRefresh] = useState(false)
     const { id } = useParams()
     const { img, name, price, quantity, supplier, description } = product;
     let updateQuantity = quantity
@@ -16,7 +17,7 @@ const UpdateInventory = () => {
             .then((response) => {
                 setProduct(response.data)
             })
-    }, [product])
+    }, [isRefresh])
 
     const handleUpdateInventory = async (e) => {
         e.preventDefault();
@@ -27,6 +28,7 @@ const UpdateInventory = () => {
             const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, stockQauntity)
             if (data.modifiedCount) {
                 e.target.reset()
+                setIsRefresh(!isRefresh)
                 toast.success('Successfully Added Stock')
             }
         }
@@ -37,6 +39,7 @@ const UpdateInventory = () => {
             const updateStock = { quantity: deliverdProduct }
             const { data } = await axios.put(`http://localhost:5000/updateproduct/${id}`, updateStock)
             if (data.modifiedCount) {
+                setIsRefresh(!isRefresh)
                 toast.success('Successfully Deliverd Product')
             }
         } else {
@@ -92,7 +95,7 @@ const UpdateInventory = () => {
                                 {name}
                             </th>
                             <td className="px-6 py-4 text-gray-900 font-[500] border-2">
-                                {price}
+                                ${price}
                             </td>
                             <td className="px-6 py-4 text-gray-900 font-[500] border-2">
                                 {updateQuantity}

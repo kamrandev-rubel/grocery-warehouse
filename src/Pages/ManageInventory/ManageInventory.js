@@ -5,17 +5,22 @@ import { toast } from 'react-toastify';
 
 const ManageInventory = () => {
     const [AllProducts, setAllProducts] = useState([]);
+    const [isRefresh, setIsRefresh] = useState(false)
 
     useEffect(() => {
         axios.get('http://localhost:5000/products')
             .then((response) => {
                 setAllProducts(response.data)
             });
-    }, [AllProducts])
+    }, [isRefresh])
     const handleDeleteItem = async (id) => {
-        const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
-        if (data.acknowledged) {
-            toast.success('Successfully Item Deleted')
+        const confirm = window.confirm('Are You Sure.?')
+        if (confirm) {
+            const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)
+            if (data.acknowledged) {
+                setIsRefresh(!isRefresh)
+                toast.success('Successfully Item Deleted')
+            }
         }
     }
 
@@ -74,7 +79,7 @@ const ManageInventory = () => {
                                             {name}
                                         </th>
                                         <td className="px-6 py-4 text-gray-900 font-[500] border-2">
-                                            {price}
+                                            ${price}
                                         </td>
                                         <td className="px-6 py-4 text-gray-900 font-[500] border-2">
                                             {updateQuantity}

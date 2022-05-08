@@ -36,7 +36,7 @@ const Navbar = () => {
                             <Link to="/inventory" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">Inventory</Link>
                         </li>
                         <li>
-                            <Link to="/" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">About</Link>
+                            <Link to="/blogs" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 last:md:p-0">Blogs</Link>
                         </li>
                         <div onClick={() => setIsActive(!isActive)}>
                             {
