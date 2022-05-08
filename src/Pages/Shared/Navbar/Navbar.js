@@ -54,7 +54,7 @@ const Navbar = () => {
                                                     <RiArrowDownSFill className='inline-block text-4xl cursor-pointer' />
                                                 </>
                                         }
-                                        <div className={`${isActive ? 'block' : 'hidden'} absolute w-64 right-[-83] left-[-200px] z-50 shadow-2xl order`}>
+                                        <div className={`${isActive ? 'block' : 'hidden'} absolute w-64 right-[-83px] md:left-[-200px] z-50 shadow-2xl order`}>
                                             <ul className='bg-white font-[roboto] font-[500] text-lg text-gray-900 rounded-lg'>
                                                 <div className='p-2 px-4 '>
                                                     {

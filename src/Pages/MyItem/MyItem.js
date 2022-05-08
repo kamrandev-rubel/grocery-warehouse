@@ -10,11 +10,15 @@ const MyItem = () => {
     const [userItems, setUserItems] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/myItem?email=${user?.email}`)
+        axios.get(`http://localhost:5000/myItem?email=${user?.email}`, {
+            headers: {
+                authorization: `bearar ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then((response => {
                 setUserItems(response.data)
             }))
-    }, [userItems])
+    }, [])
 
     const handleDeleteItem = async (id) => {
         const { data } = await axios.delete(`http://localhost:5000/removeItem/${id}`)

@@ -10,6 +10,7 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
+import axios from 'axios'
 
 const Login = () => {
     const [isShow, setIsShow] = useState(false)
@@ -31,11 +32,11 @@ const Login = () => {
 
     let from = location.state?.from?.pathname || "/";
 
-    if (user || googleUser) {
-        navigate(from, { replace: true })
-    }
+    // if (user || googleUser) {
+    //     
+    // }
 
-    const handleLoginUser = (event) => {
+    const handleLoginUser = async (event) => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
@@ -46,7 +47,12 @@ const Login = () => {
         }
         setError(false)
         setPasswordError('')
-        signInWithEmailAndPassword(email, password)
+        await signInWithEmailAndPassword(email, password)
+        const { data } = await axios.post('http://localhost:5000/login', { email })
+        if (data) {
+            localStorage.setItem('accessToken', data)
+            navigate(from, { replace: true })
+        }
     }
 
     const handleResetPassword = async (event) => {
